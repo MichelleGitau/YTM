@@ -5,12 +5,21 @@ import pickle
 
 st.set_page_config(layout="wide", initial_sidebar_state="auto", page_icon="⚡", page_title='YTM'
                                                                                           ' prediction')
-
 load_model = (open('./model.pkl', 'rb'))
 model = pickle.load(load_model)
 
 Bondtype = pd.DataFrame(['IFB', 'FXD', 'SDB'])
 st.title('YTM Prediction Model')
+
+st.write('YTM, is short for Yield to Maturity. YTM is the rate of return that investors in the financial markets demand'
+         ' in order to lend their money to businesses, governments and sovereign institutions. This model seeks to'
+         'predict the return investors will demand when lending their money to the government of Kenya.')
+st.write('Entries in the model should be done in absolute numbers, ie, 10% is entered as 0.1, and outstanding loan'
+             'millions, ie, 87 Billion is captured as 87000.')
+
+st.sidebar.header('GITHUB REPOSITORY')
+st.sidebar.write('''https://github.com/MichelleGitau/YTM.git"''')
+
 
 Tenor = pd.to_numeric(st.text_input('Tenor[in days]', ''))
 Loan = pd.to_numeric(st.text_input('Loan Amount', ''))
